@@ -1,0 +1,353 @@
+
+
+
+.search-div{
+    /* background-color: aqua; */
+    width: 90%;
+    /* margin: 0px 30px; */
+    /* margin-left: 30px; */
+    position: relative;
+}
+.search-div i{
+    position: absolute;
+    left: 2%;
+    top: 30%;
+    opacity: 0.7;
+}
+.search-div input{
+    border: 1px solid #ccc;
+    padding: 15px 10px ;
+    width: 100%;
+    outline: none;
+    padding-left: 35px;
+
+}
+
+.cocktails-suggestion{
+    position: absolute;
+    top: 100%;
+    background-color: white;
+    border: 1px solid gray;
+    width: 110%;
+    z-index: 9;
+    cursor: pointer;
+    overflow-y: scroll;
+    height: 250px;
+}
+.cocktails-suggestion p:hover,.ordinary-drinks-suggestion p:hover{
+    background-color: #ccc;
+}
+.ordinary-drinks-suggestion{
+    
+    position: absolute;
+    top: 100%;
+    height: 300px;
+    z-index: 999;
+    background-color: white;
+    border: 1px solid gray;
+    /* background-color: aqua; */
+    width: 104%;
+    cursor: pointer;
+    overflow-y: scroll;
+}
+
+.cocktail-menu {
+    /* background-color: aquamarine; */
+    position: relative;
+    width: 450px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    margin: 15px;
+    justify-content: flex-start;
+    align-items:flex-start;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: larger;
+    padding: 8px;
+
+    /* background-color: orangered; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.22);
+
+}
+ .ordinary-drinks-menu:hover{
+    opacity: 0.5;
+}
+
+.cocktail-menu img {
+    height: 100%;
+    border-radius: 10px;
+    transition: transform .4s;
+    margin-right: 20px;
+}
+.cocktail-menu img:hover ,.ordinary-drinks-menu img:hover {
+    transform: scale(1.2);
+}
+
+.ordinary-drinks-menu {
+    /* background-color: orange; */
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.22);
+    padding: 3px;
+    width: 50%;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    height: 100px;
+    margin: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.ordinary-drinks-menu img {
+    height: 100%;
+    border-radius: 10px;
+    transition: transform .4s;
+    margin-right: 20px;
+}
+.overlay{
+    background-color: transparent;
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    width: 90%;
+    height: 100%;
+    z-index: 8;
+}
+.overlay2{
+    background-color: rgba(102, 51, 153, 0.445);
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    width: 90%;
+    height: 100%;
+    z-index: 0;
+}
+
+.single-drink-detail{
+    /* background-color: orange; */
+    /* height: 400px; */
+    padding: 20px;
+    /* overflow-y: scroll; */
+}
+.single-drink-detail img{
+    height: 150px;
+    border-radius: 5px;
+}
+h4{
+    margin: 0%;
+    margin-bottom: 5px;
+    padding: 0%;
+}
+.top-div{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.top-div button {
+    background-color: palevioletred;
+    /* border: 1px solid white; */
+    padding: 10px;
+    border: none;
+    position: absolute;
+    right: 2%;
+    top: 70%;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+.add-button{
+    background-color: palevioletred;
+    /* border: 1px solid white; */
+    padding: 10px;
+    border: none;
+    position: absolute;
+    right: 2%;
+    top: 60%;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+
+.top-div button:hover,.add-button:hover{
+    opacity: 0.5;
+}
+hr{
+    border: 1px solid #ccc;
+}
+.drink-name{
+    font-size: 25px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    padding: 10px;
+    padding-bottom: 0%;
+}
+.alcohol-type{
+    padding-top: 0%;
+    padding: 10px;
+    opacity: 0.7;
+}
+.details{
+    font-size: 15px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+.details h5{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    margin: 0%;
+}
+.details h4{
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.ingredients{
+    padding-left: 20px;
+}
+
+.alcoholic-type{
+    /* background-color: aqua; */
+    width: 50%;
+    margin-left: 30px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.switch-buttons{
+    /* background-color: orange; */
+    /* width: fit-content; */
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 10px;
+    display: flex;
+}
+.switch-buttons button{
+    border: none;
+    border-right: 1px solid white;
+    padding: 10px;
+    color: white;
+}
+.alcoholic{
+    border-radius:10px 0 0px 10px;
+    background-color: green;
+    cursor: pointer;
+
+}
+.non-alcoholic{
+    border-radius:0px 10px 10px 0px;
+    background-color: green;
+    cursor: pointer;
+}
+.opacity{
+    cursor: pointer;
+    background-color: rgba(0, 128, 0, 0.219);
+
+}
+.drink-name-title{
+    /* background-color: aqua; */
+    width: 50%;
+    margin-left: 30px;
+    font-size: 22px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.random{
+    background-color: green;
+    cursor: pointer;
+}
+
+/* ========================= */
+.category-container{
+        position: relative;
+}
+.drink-category{
+    position: absolute;
+    top: 0%;
+    left: 60%;
+    background-color: white;
+    z-index: 9 !important;
+    cursor: pointer;
+    padding: 0px;
+    /* box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.22); */
+    border-radius: 5px;
+}
+.single-drink{
+    margin-left: 10px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.22);
+
+}
+.single-drink:hover{
+    background-color: #ccc;
+    color:white ;
+}
+
+.menue-section{
+    /* height: 500px; */
+    /* overflow-y: scroll; */
+    display: flex;
+    flex-direction: row;
+    /* background-color: aqua; */
+    justify-content: flex-start;
+    gap: 200px;
+    /* width: fit-content; */
+    padding: 30px;
+    /* position: sticky; */
+    /* top: 50px; */
+    /* bottom:0% !important; */
+    /* top: 0%;  */
+    /* position: relative; */
+    /* overflow-y: hidden !important; */
+    /* height: 500px; */
+    z-index: 9;
+}
+.left-side-menu{
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.22);
+    /* position:sticky; */
+    /* top:  35%; */
+    height: fit-content;
+    border-radius: 5px;
+    width: 20%;
+    padding: 20px;
+    font-size: larger;
+}
+.ctegory-div{
+    position: relative;
+    cursor: pointer;
+    /* background-color: blueviolet; */
+}
+.category-title:hover{
+    opacity: 0.5;
+}
+.category-title{
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: flex-start;
+
+}
+.category-title i{
+    /* background-color: blue; */
+    /* height: 30px; */
+    /* width: 30px; */
+    margin-right: 10px;
+}
+.right-side-menu{
+    /* background-color: rebeccapurple; */
+    
+    
+}
+.display-item{
+    /* background-color: aqua; */
+    /* width: 100%; */
+    /* overflow-y: scroll; */
+
+}
+.left-side-menu p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
