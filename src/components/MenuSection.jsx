@@ -5,43 +5,44 @@ import "../components/Menu.style.css";
 import Modal from "react-awesome-modal";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+// import style from "react-awesome-modal/lib/style";
 
 
 
 
 const MenuSection = () => {
 
-    const [selectedList,setSelectedList]=useState([]);
-    const [categoryDropDown,setCategoryDropDown]=useState(false);
-    const [cocktailName, setCocktailName] = useState([]);
-    const [searchValue, setSearchValue] = useState("");
-    const [cocktailDetail, setCocktailDetail] = useState([]);
-    const [singleDrinkDetails, setSingleDrinkDetails] = useState(false);
-    const [cocktailsSuggestion, setCocktailsSuggestion] = useState(false);
-    const [selectedCategory,setSelectedCategory]=useState("Cocktails");
+  const [selectedList, setSelectedList] = useState([]);
+  const [categoryDropDown, setCategoryDropDown] = useState(false);
+  const [cocktailName, setCocktailName] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [cocktailDetail, setCocktailDetail] = useState([]);
+  const [singleDrinkDetails, setSingleDrinkDetails] = useState(false);
+  const [cocktailsSuggestion, setCocktailsSuggestion] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Cocktails");
 
 
 
-    const notify = () => toast.success("Added Successfully");
+  const notify = () => toast.success("Added Successfully");
 
 
 
-    const displayCategory = async (item) => {
-        let res = await axios.get(
-          "https://www.thecocktaildb.com/api/json/v1/1/list.php?"+item+"=list");
-        //   console.log("coctails",res.data.drinks);
-        setSelectedList(res.data.drinks);    
-      };
+  const displayCategory = async (item) => {
+    let res = await axios.get(
+      "https://www.thecocktaildb.com/api/json/v1/1/list.php?" + item + "=list");
+    //   console.log("coctails",res.data.drinks);
+    setSelectedList(res.data.drinks);
+  };
 
-      const displayMenu = async (item,selectedCtegory) => {
-        let res = await axios.get(
-          "https://www.thecocktaildb.com/api/json/v1/1/filter.php?"+item+"="+selectedCtegory
-        );
-          console.log("coctails",res.data.drinks);
-        setCocktailName(res.data.drinks);
-      };
+  const displayMenu = async (item, selectedCtegory) => {
+    let res = await axios.get(
+      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?" + item + "=" + selectedCtegory
+    );
+    console.log("cocktails", res.data.drinks);
+    setCocktailName(res.data.drinks);
+  };
 
-      const filterCocktails = cocktailName?.filter((data) =>
+  const filterCocktails = cocktailName?.filter((data) =>
     data.strDrink.toLowerCase().includes(searchValue.toLowerCase())
   );
 
@@ -49,10 +50,10 @@ const MenuSection = () => {
     let res = await axios.get(
       "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Cocktail"
     );
-      console.log("coctails",res.data.drinks);
+    console.log("coctails", res.data.drinks);
     setCocktailName(res.data.drinks);
   };
-  
+
 
   const getDetails = async (itemId) => {
     let res = await axios.get(
@@ -64,13 +65,13 @@ const MenuSection = () => {
   };
 
 
-useEffect(()=>{
+  useEffect(() => {
     displayStartingMenu();
-},[])
-    
-    return (
-        <div className="menue-section">
-            <Modal
+  }, [])
+
+  return (
+    <div className="menue-section">
+      <Modal
         width="80%"
         zindex="9999"
         visible={singleDrinkDetails}
@@ -85,7 +86,7 @@ useEffect(()=>{
                 <h4 className="drink-name">{data.strDrink}</h4>
                 <h4 className="alcohol-type">{data.strAlcoholic}</h4>
               </div>
-              <button onClick={ notify} >+ Add </button>
+              <button onClick={notify} > Add </button>
             </div>
             <hr></hr>
             <div className="details">
@@ -94,7 +95,7 @@ useEffect(()=>{
                 {data.strCreativeCommonsConfirmed}
               </h4>
               <h4>
-                <i class="fa-solid fa-martini-glass"></i> served in{" "}
+                <i class="fa-solid fa-martini-glass"></i> Served in{" "}
                 {data.strGlass}
               </h4>
               <h4>
@@ -135,179 +136,178 @@ useEffect(()=>{
           </div>
         ))}
       </Modal>
-            <div data-aos="flip-up" className="left-side-menu">
-                <p>Filter By :</p>
-                <hr></hr>
-                <p
-                className="ctegory-div"
-                 onClick={()=>{displayCategory("c"); setCategoryDropDown(!categoryDropDown); }}>
-                    <p className="category-title"><i class="fa-solid fa-window-restore"></i>Categories</p>
-                <div className="drink-category">
-                {categoryDropDown && 
-            
-                selectedList?.map((item)=>(
-                    <p className="single-drink"
-                    onClick={()=>{displayMenu("c",item.strCategory);
-                                setSelectedCategory(item.strCategory);
-                            }} 
-                    >{item.strCategory}</p>
-                    ))
-            
-                }
-                </div>                
-                </p>
-                <hr></hr>
-                <p
-                className="ctegory-div"
-                 onClick={()=>{displayCategory("g"); setCategoryDropDown(!categoryDropDown); }}>
-                                        <p className="category-title"><i class="fa-solid fa-martini-glass-citrus"></i>Glasses</p>
+      <div data-aos="flip-up" className="left-side-menu">
+        <p>Filter By :</p>
+        <hr></hr>
+        <p
+          className="ctegory-div"
+          onClick={() => { displayCategory("c"); setCategoryDropDown(!categoryDropDown); }}>
+          <p className="category-title"><i class="fa-solid fa-window-restore"></i>Categories</p>
+          <div className="drink-category">
+            {categoryDropDown &&
 
-                <div className="drink-category">
-                {categoryDropDown && 
-            
-                selectedList?.map((item)=>(
-                    <p className="single-drink"
-                    onClick={()=>{displayMenu("g",item.strGlass);
+              selectedList?.map((item) => (
+                <p className="single-drink"
+                  onClick={() => {
+                    displayMenu("c", item.strCategory);
+                    setSelectedCategory(item.strCategory);
+                  }}
+                >{item.strCategory}</p>
+              ))
+
+            }
+          </div>
+        </p>
+        <hr></hr>
+        <p
+          className="ctegory-div"
+          onClick={() => { displayCategory("g"); setCategoryDropDown(!categoryDropDown); }}>
+          <p className="category-title"><i class="fa-solid fa-martini-glass-citrus"></i>Glasses</p>
+
+          <div className="drink-category">
+            {categoryDropDown &&
+
+              selectedList?.map((item) => (
+                <p className="single-drink"
+                  onClick={() => {
+                    displayMenu("g", item.strGlass);
                     setSelectedCategory(item.strGlass);
 
-                }} 
-                    >{item.strGlass}</p>
-                    ))
-            
-          }
-                </div>                
-                </p>
-                <hr></hr>
+                  }}
+                >{item.strGlass}</p>
+              ))
+
+            }
+          </div>
+        </p>
+        <hr></hr>
+        <p
+          className="ctegory-div"
+          onClick={() => { displayCategory("i"); setCategoryDropDown(!categoryDropDown); }}>
+
+          <p className="category-title"><i class="fa-solid fa-bell-concierge"></i>Ingredients</p>
+          <div className="drink-category">
+            {categoryDropDown &&
+
+              selectedList?.map((item) => (
                 <p
-                className="ctegory-div"
-                 onClick={()=>{displayCategory("i"); setCategoryDropDown(!categoryDropDown); }}>
-                    
-                    <p className="category-title"><i class="fa-solid fa-bell-concierge"></i>Ingredients</p>
-                <div className="drink-category">
-                {categoryDropDown && 
-            
-                selectedList?.map((item)=>(
-                    <p 
-                    className="single-drink"
-                    onClick={()=>{displayMenu("i",item.strIngredient1);
+                  className="single-drink"
+                  onClick={() => {
+                    displayMenu("i", item.strIngredient1);
                     setSelectedCategory(item.strIngredient1);
 
-                }} 
-                    >{item.strIngredient1}</p>
-                    ))
-            
-          }
-                </div>                
-                </p>
-                <hr></hr>
+                  }}
+                >{item.strIngredient1}</p>
+              ))
+
+            }
+          </div>
+        </p>
+        <hr></hr>
+        <p
+          className="ctegory-div"
+          onClick={() => { displayCategory("a"); setCategoryDropDown(!categoryDropDown); }}>
+
+          <p className="category-title"><i class="fa-solid fa-wine-bottle"></i>Alcoholic Filter</p>
+          <div className="drink-category">
+            {categoryDropDown &&
+
+              selectedList?.map((item) => (
                 <p
-                className="ctegory-div"
-                 onClick={()=>{displayCategory("a"); setCategoryDropDown(!categoryDropDown); }}>
-                    
-                    <p className="category-title"><i class="fa-solid fa-wine-bottle"></i>Alcoholic Filter</p>
-                <div className="drink-category">
-                {categoryDropDown && 
-            
-                selectedList?.map((item)=>(
-                    <p 
-                    className="single-drink"
-                    onClick={()=>{displayMenu("a",item.strAlcoholic);
+                  className="single-drink"
+                  onClick={() => {
+                    displayMenu("a", item.strAlcoholic);
                     setSelectedCategory(item.strAlcoholic);
 
-                }} 
-                    >{item.strAlcoholic}</p>
-                    ))
-            
-          }
-                </div>                
-                </p>
-            </div>
-            <div className="right-side-menu">
-                <div className="search-div">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                  }}
+                >{item.strAlcoholic}</p>
+              ))
 
-                    <input
-                                  placeholder="Search..."
+            }
+          </div>
+        </p>
+      </div>
+      <div className="right-side-menu">
+        <div className="search-div">
+          <i class="fa-solid fa-magnifying-glass"></i>
 
-                     value={searchValue}
-                     onChange={(e) => {
-                       setSearchValue(e.target.value);
-                     }}
-                    type="text"
+          <input
+            placeholder="Search your favourite items..."
+
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+            }}
+            type="text"
+            onClick={() => {
+              setCocktailsSuggestion(true);
+            }}
+          />
+
+          {cocktailsSuggestion && (
+            <div className="cocktails-suggestion">
+              {filterCocktails?.map((item) => (
+                <div>
+                  <p
                     onClick={() => {
-                        setCocktailsSuggestion(true);
-                      }}
-                    />
-                    
-            {cocktailsSuggestion && (
-              <div className="cocktails-suggestion">
-                {filterCocktails?.map((item) => (
-                  <div>
-                    <p
-                      onClick={() => {
-                        setSearchValue(item.strDrink);
-                        setCocktailsSuggestion(false);
-                      }}>
-                      {item.strDrink}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-                </div>
-
-                <h1 >{selectedCategory}</h1>
-
-                <div className="display-items">
-                    
-                    {filterCocktails?.map((item) => (
-                        <div data-aos="fade-up"
-                        data-aos-duration="2000" 
-
-                        className="cocktail-menu"
-                        onClick={() => {
-                        
-                        setTimeout(() => {
-                            setSingleDrinkDetails(true);
-                          }, 400);
-                    
-                        getDetails(item.idDrink);
+                      setSearchValue(item.strDrink);
+                      setCocktailsSuggestion(false);
                     }}>
-                    <img
-                    
-                    src={item.strDrinkThumb} alt={item.strDrink + "img"} />
-                    
-                    < span 
-                    >{item.strDrink}</span>
-              
-                    <button onClick={()=>{          
-                        setTimeout(() => {
-                            setSingleDrinkDetails(true);
-                          }, 900);
-                        notify(); 
-                    }} className="add-button">+ Add </button>
-              
+                    {item.strDrink}
+                  </p>
                 </div>
-                ))}
-                
-                
-
-                </div>
+              ))}
             </div>
-            {cocktailsSuggestion && (
+          )}
+        </div>
+
+        <h1 >{selectedCategory}</h1>
+
+        <div className="display-items">
+
+          {/* by default displaying cocktails */}
+          {filterCocktails?.map((item) => (
+            <div data-aos="fade-up"
+              data-aos-duration="2000"
+
+              className="cocktail-menu"
+              onClick={() => {
+
+                setTimeout(() => {
+                  setSingleDrinkDetails(true);
+                }, 400);
+
+                getDetails(item.idDrink);
+              }}>
+              <img
+
+                src={item.strDrinkThumb} alt={item.strDrink + "img"} />
+
+              < span
+              >{item.strDrink}</span>
+
+              <button onClick={() => {
+                setTimeout(() => {
+                  setSingleDrinkDetails(true);
+                }, 900);
+                notify();
+              }} className="add-button"> Add </button>
+
+            </div>
+          ))}
+
+
+
+        </div>
+      </div>
+      {cocktailsSuggestion && (
         <div
           className="overlay"
           onClick={() => {
             setCocktailsSuggestion(false);
           }}></div>
       )}
-      {/* {categoryDropDown &&(
-        <div
-          className="overlay2"
-          onClick={() => {
-            setCategoryDropDown(false);
-          }}></div>      )} */}
-        </div>
-    );
+    </div>
+  );
 };
 export default MenuSection;

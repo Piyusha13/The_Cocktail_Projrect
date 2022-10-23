@@ -3,10 +3,8 @@ import headerImg from "../assets/Header_img.jpg";
 import Cafepic1 from "../assets/CafePic1.jpg";
 import Cafepic2 from "../assets/Cafepic2.jpg";
 import Cafepic3 from "../assets/Cafepic3.jpg";
-
 import CafeLogo from "../assets/cafeLogo.jpg";
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
@@ -24,26 +22,21 @@ const Header = () => {
                     <p className="cafe-status">OPEN</p>
                 </div>
             </div>
-            {/* <img src={headerImg} alt="headerImg" /> */}
             <Carousel
             autoPlay={true}	
             infiniteLoop={true}
             width="650px"		>
                 <div className="header-img">
-                    <img src={headerImg} />
-                    {/* <p className="legend">Legend 1</p> */}
+                    <img src={headerImg} alt="" />
                 </div>
                 <div className="header-img">
-                    <img src={Cafepic1} />
-                    {/* <p className="legend">Legend 1</p> */}
+                    <img src={Cafepic1} alt="" />
                 </div>
                 <div className="header-img">
-                <img src={Cafepic2} />
-                    {/* <p className="legend">Legend 2</p> */}
+                <img src={Cafepic2} alt="" />
                 </div>
                 <div className="header-img">
-                <img src={Cafepic3} />
-                    {/* <p className="legend">Legend 3</p> */}
+                <img src={Cafepic3} alt="" />
                 </div>
             </Carousel>
             <div className="duration">
